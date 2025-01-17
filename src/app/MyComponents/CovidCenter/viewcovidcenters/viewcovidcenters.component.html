@@ -1,0 +1,17 @@
+<div class="container">
+    <h4 class="text-center">View Covid Centers</h4>
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Sr no.</th>
+            <th>CovCenter</th>
+            <th>UPDATE</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let covcenter of covcenlist; let i=index">
+                <td>{{i+1}}</td> 
+                <td>{{covcenter.covcennum}}</td>
+                <td><button class="btn btn-success" (click)="getCovCenterById(covcenter.covcen_id)">UPDATE</button></td>
+            </tr>
+        </tbody>
+    </table> 
+</div>
