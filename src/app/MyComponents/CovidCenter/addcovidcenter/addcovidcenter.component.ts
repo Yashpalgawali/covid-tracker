@@ -36,11 +36,21 @@ export class AddcovidcenterComponent implements OnInit{
   
   onSubmit() {
 
-    if(this.id!=null){
-
+    if(this.covcenter.covcen_id!=null){
+     
+      this.covcenserv.updateCovCenter(this.covcenter).subscribe({
+        next : (data) => {
+          sessionStorage.setItem('response','Covid center is updated successfully')
+          this.router.navigate(['/covidcenter'])
+      },
+      error:(err) =>{
+        sessionStorage.setItem('reserr','Covid center is not updated')
+        this.router.navigate(['/covidcenter'])
+      }
+      })
     }
     else
-    {
+    { 
       this.covcenserv.saveCovCenter(this.covcenter).subscribe({
       next : (data) => {
           sessionStorage.setItem('response','Covid center is saved successfully')
@@ -49,7 +59,7 @@ export class AddcovidcenterComponent implements OnInit{
       error:(err) =>{
         sessionStorage.setItem('reserr','Covid center is not saved')
         this.router.navigate(['/covidcenter'])
-      },
+      }
     })
    }
   }

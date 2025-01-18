@@ -1,0 +1,19 @@
+<div class="container">
+    <h4 class="text-center">View Covid Ward Types</h4>
+    <div *ngIf="response"><h4 class="alert alert-success">{{response}}</h4> </div>
+    <div *ngIf="reserr"><h4 class="alert alert-success">{{reserr}}</h4> </div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Sr no.</th>
+            <th>Ward Type</th>
+            <th>UPDATE</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let wardtype of covcenwardtypelist; let i=index">
+                <td>{{i+1}}</td> 
+                <td>{{wardtype.cov_cen_ward_type}}</td>
+                <td><button class="btn btn-success" (click)="getCovCenterWardTypeById(wardtype.cov_cen_ward_type_id)">UPDATE</button></td>
+            </tr>
+        </tbody>
+    </table> 
+</div>

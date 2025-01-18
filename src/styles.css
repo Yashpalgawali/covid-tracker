@@ -6,3 +6,7 @@
 .form-group {
     margin-bottom: 10px !important;
 }
+
+.alert {
+    border-left: 10px !important;
+}

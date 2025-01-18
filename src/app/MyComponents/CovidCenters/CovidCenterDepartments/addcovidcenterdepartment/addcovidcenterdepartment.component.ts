@@ -25,6 +25,7 @@ export class AddcovidcenterdepartmentComponent implements OnInit{
 
   ngOnInit(): void {
       this.dept_id = this.route.snapshot.params['dept_id']
+     
       if(this.dept_id!=null) {
         this.component_name = 'Update Covid Center Department'
         this.covcendeptserv.getCovCenterDepartmentByDepartmentId(this.dept_id).subscribe({
@@ -46,5 +47,15 @@ export class AddcovidcenterdepartmentComponent implements OnInit{
 
   onSubmit() {
     
+    this.covcendeptserv.saveCovCenterDepartment(this.covcendepartment).subscribe({
+      next:(data) => {
+          sessionStorage.setItem('response','Department is saved successfully')
+          this.router.navigate(['/covidcenterdepartment'])
+      },
+      error : (error) => {
+        sessionStorage.setItem('reserr','Department is not saved ')
+        this.router.navigate(['/covidcenterdepartment'])
+      },
+    })
   }
 }

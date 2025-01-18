@@ -1,23 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CovCenDepartment } from '../../../../../Models/CovCenDepartment';
 import { CovidcenterdepartmentService } from '../../../../Services/covidcenterdepartment.service';
+import { CovCenter } from '../../../../../Models/CovCenter';
+import { CovidcenterService } from '../../../../Services/covidcenter.service';
 
 @Component({
   selector: 'app-viewcovidcenterdepartments',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './viewcovidcenterdepartments.component.html',
   styleUrl: './viewcovidcenterdepartments.component.css'
 })
 export class ViewcovidcenterdepartmentsComponent implements OnInit{
 
 covcendeptlist : CovCenDepartment[] = []
+covcendeptlistfinal : CovCenDepartment[] = []
+covncenter : CovCenter = new CovCenter()
 response : any
 reserr : any
 
-  constructor(private router : Router,private covcendeptserv : CovidcenterdepartmentService){ }
+  constructor(private router : Router,private covcendeptserv : CovidcenterdepartmentService,
+              private covcenserv : CovidcenterService) { }
   ngOnInit(): void {
 
     if(sessionStorage.getItem('response')!=null) {
@@ -39,12 +44,22 @@ reserr : any
     this.covcendeptserv.getAllCovCenterDepartments().subscribe({
       next:(data) => {
         this.covcendeptlist = data 
-        console.log(JSON.stringify(data))
+        this.covcendeptlist.forEach(dept => {
+          if(typeof dept.covcenter === 'number') {
+
+            this.covcenserv.getAllCovCenterById(dept.covcenter).subscribe({
+              next: (covcenobj) => {
+                  dept.covcenter = covcenobj
+              },
+            })
+          }          
+        })
       },
     })
   }
 
   getCovCenterDepartmentById(dept_id : number){
+    
     this.router.navigate(['edit/covidcenterdepartment/',dept_id])
   }
 }
