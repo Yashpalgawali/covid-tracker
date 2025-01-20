@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidcenterService } from '../../../Services/covidcenter.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CovCenter } from '../../../../Models/CovCenter';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-viewcovidcenters',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './viewcovidcenters.component.html',
   styleUrl: './viewcovidcenters.component.css'
 })

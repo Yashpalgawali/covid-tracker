@@ -56,7 +56,7 @@ export class AddcovcenwardComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.covncenwards.covcenward_id==null){
+    if(this.covncenwards.covcenward_id==null) {
           this.covcenwardserv.saveCovCenterWard(this.covncenwards).subscribe({
           next:(data) => {
               sessionStorage.setItem('response','Saved successfully')
@@ -69,7 +69,16 @@ export class AddcovcenwardComponent implements OnInit {
       })
     }
     else {
-
+      this.covcenwardserv.updateCovCenterWard(this.covncenwards).subscribe({
+        next:(data) => {
+            sessionStorage.setItem('response','Ward is updated successfully')
+            this.router.navigate(['viewcovcenwards'])
+        },
+        error:(err) => {
+          sessionStorage.setItem('reserr','Ward is Not updated')
+          this.router.navigate(['viewcovcenwards'])
+        },
+    })
     }
   }
 }

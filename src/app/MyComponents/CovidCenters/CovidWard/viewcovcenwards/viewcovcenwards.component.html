@@ -1,1 +1,26 @@
-<p>viewcovcenwards works!</p>
+<div class="container">
+    <div>
+        <h4 class="text-center">View Covid Center Wards <br>
+            <a routerLink="/addcovcenward" class="btn btn-success m-2" >Add Covid center Ward</a>
+        </h4>
+    </div>
+    <div *ngIf="response"> <h5 class="alert alert-success">{{response}}</h5> </div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Sr no.</th>
+            <th>Ward Number</th>
+            <th>Ward Type</th>
+            <th>Department</th>
+            <th>UPDATE</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let covcenward of covcenwardlist; let i=index">
+                <td>{{i+1}}</td> 
+                <td>{{covcenward.covcenwardnum }}</td>
+                <td>{{covcenward.covcenwardtype.cov_cen_ward_type }}</td>
+                <td>{{covcenward.covcendept.covcendeptname }}</td>
+                <td><button class="btn btn-success" (click)="getCovCenWardById(covcenward.covcenward_id)">UPDATE</button></td>
+            </tr>
+        </tbody>
+    </table> 
+</div>

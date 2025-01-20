@@ -29,7 +29,7 @@ export class CovidcenterdepartmentService {
       return this.http.get<CovCenDepartment[]>(`${this.app_url}covcen/${covcenid}`)
     }
   
-    public updateCovCenter(covcen : CovCenDepartment):Observable<CovCenDepartment> {
+    public updateCovCenterDepartment(covcen : CovCenDepartment):Observable<CovCenDepartment> {
       return this.http.put<CovCenDepartment>(`${this.app_url}`,covcen)
     }
 

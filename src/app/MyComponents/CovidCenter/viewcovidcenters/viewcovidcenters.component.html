@@ -1,5 +1,10 @@
 <div class="container">
-    <h4 class="text-center">View Covid Centers</h4>
+    <div >
+        <h4 class="text-center">View Covid Centers<br>
+            <a routerLink="/addcovcenter" class="btn btn-primary m-3">Add Covid Center</a>
+        </h4>
+        
+    </div>
     <div *ngIf="response"> <h5 class="alert alert-success">{{response}}</h5> </div>
     <table class="table table-hover table-striped">
         <thead>

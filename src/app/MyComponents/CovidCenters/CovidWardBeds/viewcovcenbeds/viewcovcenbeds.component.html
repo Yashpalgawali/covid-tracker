@@ -1,0 +1,26 @@
+<div class="container">
+    <div><h4 class="text-center">View Covid Center Beds<br>
+            <a routerLink="/addcovcenbed" class="btn btn-primary m-3 ">Add Bed</a>
+        </h4> </div>
+    <div *ngIf="response"> <h4 class="alert alert-success">{{response}}</h4>  </div>
+    <div *ngIf="reserr"> <h4 class="alert alert-danger">{{reserr}}</h4>  </div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Sr no.</th>
+            <th>Bed Number</th>
+            <th>Ward</th>
+            <th>Department</th>
+            
+            <th>UPDATE</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let covcenbed of covcenbedlist; let i=index">
+                <td>{{i+1}}</td> 
+                <td>{{covcenbed.covcenbed_num}}</td>
+                <td>{{covcenbed.covcenward.covcenwardnum }}</td>
+                <td>{{covcenbed.covcenward.covcendept.covcendeptname }}</td>
+                <td><button class="btn btn-success" (click)="getCovCenterBedById(covcenbed.covcenbed_id)">UPDATE</button></td>
+            </tr>
+        </tbody>
+    </table> 
+</div>

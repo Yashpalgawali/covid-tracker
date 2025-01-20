@@ -46,16 +46,33 @@ export class AddcovidcenterdepartmentComponent implements OnInit{
   }
 
   onSubmit() {
-    
-    this.covcendeptserv.saveCovCenterDepartment(this.covcendepartment).subscribe({
-      next:(data) => {
-          sessionStorage.setItem('response','Department is saved successfully')
+    alert(this.covcendepartment.covcendeptid )
+    if(this.covcendepartment.covcendeptid == null)
+      {
+        this.covcendeptserv.saveCovCenterDepartment(this.covcendepartment).subscribe({
+        next:(data) => {
+            sessionStorage.setItem('response','Department is saved successfully')
+            this.router.navigate(['/covidcenterdepartment'])
+        },
+        error : (error) => {
+          sessionStorage.setItem('reserr','Department is not saved ')
           this.router.navigate(['/covidcenterdepartment'])
-      },
-      error : (error) => {
-        sessionStorage.setItem('reserr','Department is not saved ')
-        this.router.navigate(['/covidcenterdepartment'])
-      },
-    })
+        },
+      })
+    }
+    if(this.covcendepartment.covcendeptid != null)
+      {
+        this.covcendeptserv.updateCovCenterDepartment(this.covcendepartment).subscribe({
+        next:(data) => {
+            sessionStorage.setItem('response','Department is updated successfully')
+            this.router.navigate(['/covidcenterdepartment'])
+        },
+        error : (error) => {
+          sessionStorage.setItem('reserr','Department is not updated ')
+          this.router.navigate(['/covidcenterdepartment'])
+        },
+      })
+    }
+
   }
 }

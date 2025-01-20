@@ -7,6 +7,8 @@ import { AddcovcenwardtypeComponent } from './MyComponents/CovidCenters/CovidWar
 import { ViewcovcenwardtypesComponent } from './MyComponents/CovidCenters/CovidWardType/viewcovcenwardtypes/viewcovcenwardtypes.component';
 import { AddcovcenwardComponent } from './MyComponents/CovidCenters/CovidWard/addcovcenward/addcovcenward.component';
 import { ViewcovcenwardsComponent } from './MyComponents/CovidCenters/CovidWard/viewcovcenwards/viewcovcenwards.component';
+import { AddcovcenbedComponent } from './MyComponents/CovidCenters/CovidWardBeds/addcovcenbed/addcovcenbed.component';
+import { ViewcovcenbedsComponent } from './MyComponents/CovidCenters/CovidWardBeds/viewcovcenbeds/viewcovcenbeds.component';
 
 export const routes: Routes = [
     { path : "addcovcenter" ,component :  AddcovidcenterComponent},
@@ -23,5 +25,9 @@ export const routes: Routes = [
 
     { path : "addcovcenward" , component : AddcovcenwardComponent },
     { path : "viewcovcenwards" , component : ViewcovcenwardsComponent},
-    { path : "edit/covcenward/:ward_id" , component : AddcovcenwardComponent}
+    { path : "edit/covcenward/:ward_id" , component : AddcovcenwardComponent},
+
+    { path : "addcovcenbed" , component : AddcovcenbedComponent },
+    { path : "viewcovcenbeds" , component : ViewcovcenbedsComponent},
+    { path : "edit/covcenbed/:bed_id" , component : AddcovcenbedComponent}
 ];

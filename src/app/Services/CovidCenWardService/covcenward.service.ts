@@ -26,6 +26,10 @@ export class CovcenwardService {
       return this.http.get<CovCenWards[]>(`${this.app_url}wardtype/${wardtype}`)
     }
 
+    public getAllCovCenterWardsByDepartmentId(dept_id : number):Observable<CovCenWards[]> {
+      return this.http.get<CovCenWards[]>(`${this.app_url}department/${dept_id}`)
+    }
+
     public getCovCenterWardById(covcenwardid : number):Observable<CovCenWards> {
       return this.http.get<CovCenWards>(`${this.app_url}${covcenwardid}`)
     }

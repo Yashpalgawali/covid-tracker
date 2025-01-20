@@ -1,0 +1,29 @@
+<div class="container">
+    <h4 class="text-center">{{component_name}}</h4>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="covcendept">Covid Center Department</label>
+            <select class="form-control"  name="covcendept" [(ngModel)]="covcenbed.covcendept" (change)="getWardsByDeptId(covcenbed.covcendept)">
+                <option selected disabled>Please select Department</option>
+                <option *ngFor="let covcendept of covcendeptlist" [ngValue] ="covcendept" >{{covcendept.covcendeptname}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="covcenward">Covid Center Ward</label>
+            <select class="form-control"  name="covcenward" [(ngModel)]="covcenbed.covcenward">
+                <option selected disabled>Please select Ward</option>
+                <option *ngFor="let covcenward of covcenwardlist" [ngValue] ="covcenward" >{{covcenward.covcenwardnum}}</option>
+            </select>
+        </div>
+ 
+        <div class="form-group">
+            <label for="covcenbed_num">Bed Number</label>
+            <input type="text" name="covcenbed_num" id="covcenbed_num" class="form-control" [(ngModel)]="covcenbed.covcenbed_num" placeholder="Enter Bed Number" required >
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success"  >Add Bed </button>
+        </div>
+    </form>
+</div>
