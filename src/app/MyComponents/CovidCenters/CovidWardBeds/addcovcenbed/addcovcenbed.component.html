@@ -14,7 +14,7 @@
             <label for="covcenward">Covid Center Ward</label>
             <select class="form-control"  name="covcenward" [(ngModel)]="covcenbed.covcenward">
                 <option selected disabled>Please select Ward</option>
-                <option *ngFor="let covcenward of covcenwardlist" [ngValue] ="covcenward" >{{covcenward.covcenwardnum}}</option>
+                <option *ngFor="let covcenward of covcenwardlist" [ngValue] ="covcenward" >{{covcenward.covcenwardnum}} ( {{covcenward.covcenwardtype.cov_cen_ward_type}} ) </option>
             </select>
         </div>
  

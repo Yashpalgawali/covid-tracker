@@ -86,7 +86,7 @@ export class AddcovcenbedComponent implements OnInit {
         this.covcenwardlist =data
         
         this.covcenwardlist.forEach(wards => {
-          alert(wards.covcenwardtype)
+         
             if( typeof wards.covcenwardtype === 'object' ) {
               //  alert(wards.covcenwardtype)
               //  wards.covcenwardtype = wards.covcenwardtype.cov_cen_ward_type_id

@@ -6,17 +6,19 @@
     <div *ngIf="reserr"> <h4 class="alert alert-danger">{{reserr}}</h4>  </div>
     <table class="table table-hover table-striped">
         <thead>
-            <th>Sr no.</th>
+           
             <th>Bed Number</th>
-            <th>Ward</th>
+            <th>Ward Type</th>
+            <th>Ward Number</th>
             <th>Department</th>
             
             <th>UPDATE</th>
         </thead>
         <tbody>
             <tr *ngFor="let covcenbed of covcenbedlist; let i=index">
-                <td>{{i+1}}</td> 
+               
                 <td>{{covcenbed.covcenbed_num}}</td>
+                <td>{{covcenbed.covcenward.covcenwardtype.cov_cen_ward_type }}</td>
                 <td>{{covcenbed.covcenward.covcenwardnum }}</td>
                 <td>{{covcenbed.covcenward.covcendept.covcendeptname }}</td>
                 <td><button class="btn btn-success" (click)="getCovCenterBedById(covcenbed.covcenbed_id)">UPDATE</button></td>
