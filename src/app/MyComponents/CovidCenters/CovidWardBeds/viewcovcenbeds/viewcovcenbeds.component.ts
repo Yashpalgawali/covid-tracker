@@ -15,6 +15,8 @@ import { CovcenwardService } from '../../../../Services/CovidCenWardService/covc
 })
 export class ViewcovcenbedsComponent implements OnInit {
 
+  covcenbed : CovCenBed = new CovCenBed()
+
   covcenbedlist : CovCenBed[] = []
   covcenbedlistfinal : CovCenBed[] = []
   covcendept_id !: number
@@ -28,9 +30,9 @@ export class ViewcovcenbedsComponent implements OnInit {
     this.covcenbedserv.getAllCovCenterBeds().subscribe({
       next:(data) =>{
         this.covcenbedlist = data
-        console.log(this.covcenbedlist)
+      
         this.covcenbedlist.forEach(beds => {
-          
+       
           if(typeof beds.covcenward != 'object') {
             this.covcenwardserv.getCovCenterWardById(beds.covcenward).subscribe({
               next:(wardobj) => {
@@ -51,6 +53,6 @@ export class ViewcovcenbedsComponent implements OnInit {
   }
 
   getCovCenterBedById(bed_id : number){
-
+    this.router.navigate(['edit/covcenbed/',bed_id])
   }
 }

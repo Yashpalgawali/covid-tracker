@@ -38,20 +38,29 @@ export class AddcovcenbedComponent implements OnInit {
    this.bed_id = this.route.snapshot.params['bed_id']
     if(this.bed_id != null) {
       this.component_name = 'Update Covid Center ward'
+      this.covcenbedserv.getAllCovCenterBedById(this.bed_id).subscribe({
+        next:(data) => {
+            this.covcenbed = data
+        },
+      })
+      this.getAllCovCenterDepartments()
     }
     else {
         this.component_name = 'Add Covid Center ward'
-        this.covcendeptserv.getAllCovCenterDepartments().subscribe({
-          next:(data) =>{
-            this.covcendeptlist = data
-          },
-        })
+       this.getAllCovCenterDepartments()
     }
   }
+
+  getAllCovCenterDepartments()
+  {
+    this.covcendeptserv.getAllCovCenterDepartments().subscribe({
+      next:(data) =>{
+        this.covcendeptlist = data
+      },
+    })
+  }
   onSubmit() {
-    console.log(this.covcenbed)
-    //alert(JSON.stringify(this.covcenbed.covcenward))
-    
+     
     if(this.covcenbed.covcenbed_id == null){
       this.covcenbedserv.saveCovCenterBed(this.covcenbed).subscribe({
         next:(data) =>{
@@ -64,19 +73,19 @@ export class AddcovcenbedComponent implements OnInit {
         },
       })
     }
-    // else{
-    //   this.covcenbedserv.updateCovCenterBed(this.covcenbed).subscribe({
-    //     next:(data) => {
-    //         this.covcenbed = data
-    //         sessionStorage.setItem('response','Bed '+this.covcenbed.covcenbed_num+' is updated successfully')
-    //         this.router.navigate(['/viewcovcenbeds'])
-    //     },
-    //     error:(err)=> {
-    //       sessionStorage.setItem('reserr','Bed '+this.covcenbed.covcenbed_num+' is not updated')
-    //       this.router.navigate(['/viewcovcenbeds'])
-    //     },
-    //   })
-    // }
+    else{
+      this.covcenbedserv.updateCovCenterBed(this.covcenbed).subscribe({
+        next:(data) => {
+            this.covcenbed = data
+            sessionStorage.setItem('response','Bed '+this.covcenbed.covcenbed_num+' is updated successfully')
+            this.router.navigate(['/viewcovcenbeds'])
+        },
+        error:(err)=> {
+          sessionStorage.setItem('reserr','Bed '+this.covcenbed.covcenbed_num+' is not updated')
+          this.router.navigate(['/viewcovcenbeds'])
+        },
+      })
+    }
   }
 
   getWardsByDeptId(event : any  ) {
@@ -85,18 +94,18 @@ export class AddcovcenbedComponent implements OnInit {
       next:(data) => {
         this.covcenwardlist =data
         
-        this.covcenwardlist.forEach(wards => {
+        // this.covcenwardlist.forEach(wards => {
          
-            if( typeof wards.covcenwardtype === 'object' ) {
-              //  alert(wards.covcenwardtype)
-              //  wards.covcenwardtype = wards.covcenwardtype.cov_cen_ward_type_id
-              //  this.covcenwardtypeserv.getAllCovCenterWardTypeById(wards.covcenwardtype).subscribe({
-              //   next:(typeobj)=> {
-              //       wards.covcenwardtype = typeobj
-              //   },
-              // })
-            }
-          })
+        //     if( typeof wards.covcenwardtype === 'object' ) {
+        //       //  alert(wards.covcenwardtype)
+        //       //  wards.covcenwardtype = wards.covcenwardtype.cov_cen_ward_type_id
+        //       //  this.covcenwardtypeserv.getAllCovCenterWardTypeById(wards.covcenwardtype).subscribe({
+        //       //   next:(typeobj)=> {
+        //       //       wards.covcenwardtype = typeobj
+        //       //   },
+        //       // })
+        //     }
+        //   })
       },
     })
     

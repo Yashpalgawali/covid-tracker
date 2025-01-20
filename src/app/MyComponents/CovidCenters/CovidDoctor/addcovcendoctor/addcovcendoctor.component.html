@@ -1,0 +1,21 @@
+<div class="container">
+    <h4 class="text-center">{{component_name}}</h4>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="covcendept">Department</label>
+            <select class="form-control"  name="covcendept" [(ngModel)]="covcendoc.covcendept">
+                <option selected disabled>Please select Center name</option>
+                <option *ngFor="let covcendept of covcendeptlist" [ngValue] ="covcendept" >{{covcendept.covcendeptname}}</option>
+            </select>
+            </div>
+ 
+        <div class="form-group">
+            <label for="covcendocname">Doctor Name</label>
+            <input type="text" name="covcendocname" id="covcendocname" class="form-control" [(ngModel)]="covcendoc.covcendocname" placeholder="Enter Deprtment Name" required="" >
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success"  >Add Doctor</button>
+        </div>
+    </form>
+</div>
