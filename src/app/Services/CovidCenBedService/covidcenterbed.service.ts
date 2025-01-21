@@ -23,8 +23,12 @@ export class CovidcenterbedService {
    }
  
    public getAllCovCenterBedById(covcenBedid : number):Observable<CovCenBed> {
-     return this.http.get<CovCenBed>(`${this.app_url}${covcenBedid}`)
-   }
+    return this.http.get<CovCenBed>(`${this.app_url}${covcenBedid}`)
+  }
+
+  public getAllCovCenterBedByWardId(covcenWardid : number):Observable<CovCenBed[]> {
+    return this.http.get<CovCenBed[]>(`${this.app_url}covcenward/${covcenWardid}`)
+  }
  
    public updateCovCenterBed(covcen : CovCenBed):Observable<CovCenBed> {
      return this.http.put<CovCenBed>(`${this.app_url}`,covcen)

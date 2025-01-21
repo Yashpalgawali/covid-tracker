@@ -1,3 +1,4 @@
+import { CovCenDoctor } from "./CovCenDoctor"
 import { CovCenter } from "./CovCenter"
 import { CovCenWards } from "./CovCenWards"
 
@@ -7,4 +8,5 @@ export class CovCenDepartment{
     covcenter : CovCenter = new CovCenter()
     covcenwards : CovCenWards[]=[]
 
+    covcendoctor : CovCenDoctor[] = [] 
 }

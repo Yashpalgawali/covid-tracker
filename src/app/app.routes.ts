@@ -11,6 +11,8 @@ import { AddcovcenbedComponent } from './MyComponents/CovidCenters/CovidWardBeds
 import { ViewcovcenbedsComponent } from './MyComponents/CovidCenters/CovidWardBeds/viewcovcenbeds/viewcovcenbeds.component';
 import { AddcovcendoctorComponent } from './MyComponents/CovidCenters/CovidDoctor/addcovcendoctor/addcovcendoctor.component';
 import { ViewcovcendoctorsComponent } from './MyComponents/CovidCenters/CovidDoctor/viewcovcendoctors/viewcovcendoctors.component';
+import { AddcovcenpatientComponent } from './MyComponents/CovidCenters/CovidPatient/addcovcenpatient/addcovcenpatient.component';
+import { ViewcovcenpatientComponent } from './MyComponents/CovidCenters/CovidPatient/viewcovcenpatient/viewcovcenpatient.component';
 
 export const routes: Routes = [
     { path : "addcovcenter" ,component :  AddcovidcenterComponent},
@@ -35,5 +37,9 @@ export const routes: Routes = [
 
     { path : "addcovcendoctor" , component : AddcovcendoctorComponent },
     { path : "viewcovcendoctors" , component : ViewcovcendoctorsComponent},
-    { path : "edit/covcendoctor/:doc_id" , component : AddcovcendoctorComponent}
+    { path : "edit/covcendoctor/:doc_id" , component : AddcovcendoctorComponent},
+
+    { path : "addcovcenpatient" , component : AddcovcenpatientComponent },
+    { path : "viewcovcenpatients" , component : ViewcovcenpatientComponent},
+    { path : "edit/covcenpatient/:patient_id" , component : AddcovcenpatientComponent}
 ];

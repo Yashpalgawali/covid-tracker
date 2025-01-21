@@ -23,7 +23,7 @@ export class AddcovidcenterComponent implements OnInit{
     this.id = this.route.snapshot.params['id']
     if(this.id!= null) {
       this.component_name = 'Update Covid Center'
-      this.covcenserv.getAllCovCenterById(this.id).subscribe({
+      this.covcenserv.getCovCenterById(this.id).subscribe({
         next : (data) => {
             this.covcenter = data
         },

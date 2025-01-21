@@ -47,7 +47,7 @@ reserr : any
         this.covcendeptlist.forEach(dept => {
           if(typeof dept.covcenter === 'number') {
 
-            this.covcenserv.getAllCovCenterById(dept.covcenter).subscribe({
+            this.covcenserv.getCovCenterById(dept.covcenter).subscribe({
               next: (covcenobj) => {
                   dept.covcenter = covcenobj
               },

@@ -1,0 +1,36 @@
+<div class="container">
+    <h4 class="text-center">{{component_name}}</h4>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="covcendept">Select Department</label>
+            <select class="form-control"  name="covcendept" [(ngModel)]="covcenpatient.covcendept" (change)="getWardsByDepartmentId(covcenpatient.covcendept)" >
+                <option selected disabled>Please Select Department name</option>
+                <option *ngFor="let covcendept of covcendeptlist" [ngValue] ="covcendept" >{{covcendept.covcendeptname}}</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="covcendept">Select Wards</label>
+                <select class="form-control"  name="covcendept" [(ngModel)]="covcenpatient.covcenwards" (change)="getBedsByWardId(covcenpatient.covcenwards)" >
+                    <option selected disabled>Please Select Department name</option>
+                    <option *ngFor="let covcenward of covcenwardlist" [ngValue] ="covcenward" > ({{covcenward.covcenwardtype.cov_cen_ward_type}}) {{covcenward.covcenwardnum}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="covcenbed">Select Bed</label>
+                <select class="form-control"  name="covcenbed" [(ngModel)]="covcenpatient.covcenbed "  >
+                    <option selected disabled>Please Select Bed</option>
+                    <option *ngFor="let covcenbed of covcenbedlist" [ngValue] ="covcenbed" >{{covcenbed.covcenbed_num }}</option>
+                </select>
+            </div>
+ 
+        <div class="form-group">
+            <label for="covcen_patient_name">Patient Name</label>
+            <input type="text" name="covcen_patient_name" id="covcen_patient_name" class="form-control" [(ngModel)]="covcenpatient.covcen_patient_name" placeholder="Enter Patient's Name" required="" >
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" >Add Patient</button>
+        </div>
+    </form>
+</div>

@@ -23,7 +23,7 @@ export class CovidcenterService {
     return this.http.get<CovCenter[]>(`${this.app_url}`)
   }
 
-  public getAllCovCenterById(covcenid : number):Observable<CovCenter> {
+  public getCovCenterById(covcenid : number):Observable<CovCenter> {
     return this.http.get<CovCenter>(`${this.app_url}${covcenid}`)
   }
 
